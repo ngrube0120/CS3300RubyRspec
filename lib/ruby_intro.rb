@@ -57,15 +57,57 @@ end
 # Part 2
 
 def hello(name)
+  # simply return our string with our concatenated name
   result = "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  startingLetter = 0
+  result = false
+  if s.length > 0
+    startingLetter = s[0].upcase
+  
+    case startingLetter
+    when "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"
+      result = true
+    else
+      result = false
+    end
+  end
+
+  return result
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  isBinary = false
+  highestPower = s.length - 1
+  value = 0
+  result = false
+
+  for i in 0..(s.length - 1)
+    case s[i]
+    when "0", "1", " "
+      isBinary = true
+    else
+      isBinary = false
+      break
+    end
+  end
+
+  if isBinary
+    for i in 0..(s.length - 1)
+      if s[i] == "1"
+        value += 2 ** highestPower
+      end
+      highestPower -= 1
+    end
+
+    if (value % 4) == 0
+      result = true
+    end
+  end
+
+  return result
 end
 
 # Part 3
