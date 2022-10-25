@@ -3,15 +3,45 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  # there exists a defined method for summing all elements in an array
+  arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  bignum = 0
+  bignum2 = 0
+  smallnum = 0
+  result = 0
+
+  if arr.size > 0
+    # check for negatives
+    arr.each do |num|
+      if num < smallnum
+        smallnum = num
+      end
+    end
+    # if we find a negative number, set it as our initial comparison
+    bignum = smallnum
+
+    # then find the largest two
+    arr.each do |num|
+      if num > bignum
+        bignum2 = bignum
+        bignum = num
+      elsif num > bignum2
+        bignum2 = num
+      end
+    end
+  end
+
+  # return our largest two
+  result = bignum + bignum2
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  num1 = 0
+  num2 = 0
+  result = false
 end
 
 # Part 2
