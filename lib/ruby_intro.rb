@@ -65,8 +65,10 @@ def starts_with_consonant? s
   startingLetter = 0
   result = false
   if s.length > 0
+    # grab the first letter of our input string
     startingLetter = s[0].upcase
-  
+    
+    # use a case to determine if our first letter is any consonant
     case startingLetter
     when "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"
       result = true
@@ -84,6 +86,7 @@ def binary_multiple_of_4? s
   value = 0
   result = false
 
+  # check if our input is binary
   for i in 0..(s.length - 1)
     case s[i]
     when "0", "1", " "
@@ -94,6 +97,7 @@ def binary_multiple_of_4? s
     end
   end
 
+  # if it is binary, convert it to decimal and use modulus to determine if it is divisible by 4
   if isBinary
     for i in 0..(s.length - 1)
       if s[i] == "1"
@@ -113,5 +117,39 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price) # constructor for BookInStock
+    @isbn = isbn
+    @price = price
+
+    if @isbn.class != String # raise an ArgumentError if isnb is either not a string, or a string with length 0
+      raise ArgumentError
+    elsif @isbn.length == 0
+      raise ArgumentError
+    end
+
+    if @price <= 0 # raise an argument error if price is less than or equal to zero
+      raise ArgumentError
+    end
+  end
+
+  def isbn # setter for isbn
+    @isbn
+  end
+
+  def isbn=(isbn) # setter for isbn
+    @isbn = isbn
+  end
+
+  def price # getter for price
+    @price
+  end
+
+  def price=(price) # setter for price
+    @price = price
+  end
+
+  def price_as_string
+    # truncate our float to two decimal places using format()
+    result = format('$%<value>0.2f', value: price)
+  end
 end
