@@ -39,15 +39,25 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  num1 = 0
-  num2 = 0
   result = false
+
+  # nested for loop to iterate through array.
+  for i in 0..(arr.size - 2) # start at first element, go to second to last element
+    for j in (i + 1)..(arr.size - 1) # start at the next element from our current one, iterate through to end
+      if (arr.at(i) + arr.at(j)) == n
+        # if our two elements add up to n, set result to true
+        result = true
+      end
+    end
+  end
+
+  return result
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  result = "Hello, #{name}"
 end
 
 def starts_with_consonant? s
